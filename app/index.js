@@ -202,7 +202,8 @@ var SurvyeGorillaGenerator = yeoman.generators.Base.extend({
     ];
     if(this.filters.socketio) angModules.push("'btford.socket-io'");
     if(this.filters.uirouter) angModules.push("'ui.router'");
-    if(this.filters.uibootstrap) angModules.push("'ui.bootstrap'");
+    
+    angModules.push("'restangular'");
 
     this.angularModules = "\n\t\t  " + angModules.join(",\n\t\t  ") +"\n\t\t";
   },

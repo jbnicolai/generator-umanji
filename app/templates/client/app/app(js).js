@@ -17,14 +17,26 @@
   }
 
   /* @ngInject */
-  function run($rootScope, $location, Auth) {
+  function run($rootScope, $location, Restangular) {
+
+    // Restangular default setting 
+    Restangular.setBaseUrl('api');
+    Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+
+      var extractedData;
+      if (operation === "getList") {
+        extractedData = data.data;
+      } else {
+        extractedData = data;
+      }
+      
+      return extractedData;
+    });
+
+
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
-        if (next.authenticate && !loggedIn) {
-          $location.path('/login');
-        }
-      });
+      
     });
   }
 

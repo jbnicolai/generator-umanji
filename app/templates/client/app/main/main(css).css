@@ -1,3 +1,9 @@
+.box {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
 .thing-form {
     margin: 20px 0;
 }

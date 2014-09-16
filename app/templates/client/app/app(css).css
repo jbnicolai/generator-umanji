@@ -9,6 +9,31 @@
     font-style: normal;
 }
 
+
+@font-face {
+    font-family: 'Basic Icons';
+    src: url('../bower_components/semantic-ui/build/packaged/fonts/basic.icons.eot');
+    src: url('../bower_components/semantic-ui/build/packaged/fonts/basic.icons.eot') format('embedded-opentype'),
+    url('../bower_components/semantic-ui/build/packaged/fonts/basic.icons.woff') format('woff'),
+    url('../bower_components/semantic-ui/build/packaged/fonts/basic.icons.ttf') format('truetype'),
+    url('../bower_components/semantic-ui/build/packaged/fonts/basic.icons.svg#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Icons';
+    src: url('../bower_components/semantic-ui/build/packaged/fonts/icons.eot');
+    src: url('../bower_components/semantic-ui/build/packaged/fonts/icons.eot') format('embedded-opentype'),
+    url('../bower_components/semantic-ui/build/packaged/fonts/icons.woff') format('woff'),
+    url('../bower_components/semantic-ui/build/packaged/fonts/icons.ttf') format('truetype'),
+    url('../bower_components/semantic-ui/build/packaged/fonts/icons.svg#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /**
  * App-wide Styles
  */
