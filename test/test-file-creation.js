@@ -38,7 +38,7 @@ describe('angular-fullstack generator', function () {
       '../../app',
       [
         helpers.createDummyGenerator(),
-        'moca-component:app'
+        'umanji-component:app'
       ]
     ];
 
@@ -128,7 +128,7 @@ describe('angular-fullstack generator', function () {
           '../../app',
           [
             helpers.createDummyGenerator(),
-            'moca-component:app'
+            'umanji-component:app'
           ]
         ]);
         gen.options['skip-install'] = true;

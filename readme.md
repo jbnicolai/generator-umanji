@@ -1,4 +1,4 @@
-# generator-moca
+# generator-umanji
 
 ### Followed by JohnPaPa style guide : [https://github.com/johnpapa/angularjs-styleguide](https://github.com/johnpapa/angularjs-styleguide)
 
@@ -7,18 +7,18 @@
 
 ### Yeoman Generators
 
-To install generator-moca from npm, run:
+To install generator-umanji from npm, run:
 
 ```
-$ npm install -g generator-moca
+$ npm install -g generator-umanji
 ```
 
 Finally, initiate the generator:
 
 ```
-$ yo moca
+$ yo umanji
 ```
 
 ### Dependencies Generator
 
-generator-moca-component
+generator-umanji-component

@@ -67,42 +67,18 @@ var SurvyeGorillaGenerator = yeoman.generators.Base.extend({
 
     this.prompt([{
         type: "list",
-        name: "script",
-        message: "What would you like to write scripts with?",
-        choices: [ "JavaScript", "CoffeeScript"],
-        filter: function( val ) {
-          var filterMap = {
-            'JavaScript': 'js',
-            'CoffeeScript': 'coffee'
-          };
-
-          return filterMap[val];
-        }
-      }, {
-        type: "list",
         name: "stylesheet",
         default: 0,
         message: "What would you like to write stylesheets with?",
-        choices: [ "CSS", "Sass", "Stylus", "Less"],
+        choices: [ "CSS", "Sass"],
         filter: function( val ) { return val.toLowerCase(); }
-      }, {
-        type: "confirm",
-        name: "bootstrap",
-        message: "Would you like to include Bootstrap?"
-      }, {
-        type: "confirm",
-        name: "uibootstrap",
-        message: "Would you like to include UI Bootstrap?",
-        when: function (answers) {
-          return answers.bootstrap;
-        }
       }], function (answers) {
         this.filters.js = true;
         this.filters.html = true;
         this.filters[answers.stylesheet] = true;
         this.filters.uirouter = true;
-        this.filters.bootstrap = answers.bootstrap;
-        this.filters.uibootstrap =  answers.uibootstrap;
+        this.filters.bootstrap = false;
+        this.filters.uibootstrap =  false;
       cb();
       }.bind(this));
   },
@@ -116,15 +92,8 @@ var SurvyeGorillaGenerator = yeoman.generators.Base.extend({
 
     this.prompt([{
       type: "confirm",
-      name: "mongoose",
-      message: "Would you like to use mongoDB with Mongoose for data modeling?"
-    }, {
-      type: "confirm",
       name: "auth",
-      message: "Would you scaffold out an authentication boilerplate?",
-      when: function (answers) {
-        return answers.mongoose;
-      }
+      message: "Would you scaffold out an authentication boilerplate?"
     }, {
       type: 'checkbox',
       name: 'oauth',
@@ -159,8 +128,8 @@ var SurvyeGorillaGenerator = yeoman.generators.Base.extend({
       },
       default: true
     }], function (answers) {
-      if(answers.socketio) this.filters.socketio = true;
-      if(answers.mongoose) this.filters.mongoose = true;
+      this.filters.socketio = true;
+      this.filters.mongoose = true;
       if(answers.auth) this.filters.auth = true;
       if(answers.oauth) {
         if(answers.oauth.length) this.filters.oauth = true;
@@ -207,7 +176,7 @@ var SurvyeGorillaGenerator = yeoman.generators.Base.extend({
     if(this.filters.sass) extensions.push('scss');
     if(this.filters.less) extensions.push('less');
 
-    this.composeWith('moca-component', {
+    this.composeWith('umanji-component', {
       options: {
         'routeDirectory': appPath,
         'directiveDirectory': appPath,
@@ -217,7 +186,7 @@ var SurvyeGorillaGenerator = yeoman.generators.Base.extend({
         'extensions': extensions,
         'basePath': 'client'
       }
-    }, { local: require.resolve('generator-moca-component/app/index.js') });
+    }, { local: require.resolve('generator-umanji-component/app/index.js') });
   },
 
   ngModules: function() {
@@ -231,7 +200,6 @@ var SurvyeGorillaGenerator = yeoman.generators.Base.extend({
       "'ngResource'",
       "'ngSanitize'"
     ];
-    if(this.filters.ngroute) angModules.push("'ngRoute'");
     if(this.filters.socketio) angModules.push("'btford.socket-io'");
     if(this.filters.uirouter) angModules.push("'ui.router'");
     if(this.filters.uibootstrap) angModules.push("'ui.bootstrap'");

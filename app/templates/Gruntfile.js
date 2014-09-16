@@ -198,7 +198,7 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
-            '.tmp',
+            // '.tmp',
             // '<%%= yeoman.dist %>/*',
             '<%%= yeoman.mobile %>/www/*',
             '!<%%= yeoman.mobile %>/www/res'
@@ -349,15 +349,15 @@ module.exports = function (grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: '<%%= scriptAppName %>',
+        module: '<%= scriptAppName %>',
         htmlmin: {
-          collapseBooleanAttributes: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-          removeEmptyAttributes: true,
-          removeRedundantAttributes: true,
-          removeScriptTypeAttributes: true,
-          removeStyleLinkTypeAttributes: true
+          // collapseBooleanAttributes: true,
+          // collapseWhitespace: true,
+          // removeAttributeQuotes: true,
+          // removeEmptyAttributes: true,
+          // removeRedundantAttributes: true,
+          // removeScriptTypeAttributes: true,
+          // removeStyleLinkTypeAttributes: true
         },
         usemin: 'app/app.js'
       },
@@ -417,10 +417,17 @@ module.exports = function (grunt) {
         src: ['**/*']
       },
       s_mobile: {
-        expand: true,
-        cwd: '<%%= yeoman.client %>',
-        dest: '<%%= yeoman.mobile %>/www',
-        src: ['**/*']
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.client %>',
+          dest: '<%= yeoman.mobile %>/www',
+          src: ['**/*']
+        },{
+          expand: true,
+          cwd: '.tmp/app',
+          dest: '<%= yeoman.mobile %>/www/app',
+          src: ['app.css']
+        }]
       },
       styles: {
         expand: true,
@@ -704,7 +711,7 @@ module.exports = function (grunt) {
         options: {
           command: ['create','platform', 'plugin'],
           platforms: ['ios','android'],
-          plugins: ['camera', 'console', 'file', 'network-information']
+          plugins: ['camera', 'console', 'file', 'network-information', 'geolocation']
         }
       },
       add_platforms: {
@@ -728,7 +735,7 @@ module.exports = function (grunt) {
               // 'device-motion',
               // 'device-orientation',
               // 'dialogs',
-              // 'geolocation',
+              'geolocation',
               // 'globalization',
               // 'inappbrowser',
               // 'media',
@@ -756,7 +763,7 @@ module.exports = function (grunt) {
               // 'device-motion',
               // 'device-orientation',
               // 'dialogs',
-              // 'geolocation',
+              'geolocation',
               // 'globalization',
               // 'inappbrowser',
               // 'splashscreen',

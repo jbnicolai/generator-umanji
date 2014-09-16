@@ -3,7 +3,7 @@ var yeoman = require('yeoman-generator');
 
 var Generator = yeoman.generators.Base.extend({
   compose: function() {
-    this.composeWith('moca-component:route', {arguments: this.arguments}, { local: require.resolve('generator-moca-component/route') });
+    this.composeWith('umanji-component:route', {arguments: this.arguments}, { local: require.resolve('generator-umanji-component/route') });
   }
 });
 
